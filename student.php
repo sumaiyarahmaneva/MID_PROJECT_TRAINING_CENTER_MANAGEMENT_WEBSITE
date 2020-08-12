@@ -2,17 +2,16 @@
 	session_start();
 	if(!empty($_SESSION))
 	{
-		if(empty($_SESSION['status']))
+		if(empty($_SESSION['status']) || $_SESSION['usertype']!="Student")
 		{
-			header('location:login.html');
+			header('location:logout.php');
 		}
 	}
 	else
 	{
-		if(empty($_COOKIE['status']))
+		if(empty($_COOKIE['status']) || $_SESSION['usertype']!="Student")
 		{
-			echo $_COOKIE['status'];
-			header('location:login.html');
+			header('location:logout.php');
 		}
 	}
 ?>
@@ -41,7 +40,7 @@
 					<hr/>
 					<ul>
 						<li><a href="student.php">Student Home</a></li>
-						<li><a href="assignment.php">Assignment</a></li>
+						<li><a href="assignment.php">Upload Assignment</a></li>
 						<li><a href="downloadform.php">Download form</a></li>
 						<li><a href="trainerdetails.php">Trainer Details</a></li>
 						<li><a href="marks.php">Marks</a></li>
@@ -55,7 +54,6 @@
 						<li><a href="applyforjob.php">Apply For Job</a></li>
 						<li><a href="changepassword.php">Change Password</a></li>
 						<li><a href="editprofile.php">Edit Profile</a></li>
-						<li><a href="logcheck.php">Go Page</a></li>
 					</ul>
 				</td>
 				<td rowspan="6" align="center">
